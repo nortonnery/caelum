@@ -11,7 +11,8 @@
 </head>
 <body>
 	<center>
-	<jsp:useBean id="dao" class="br.com.caelum.agenda.dao.ContatoDao"/>
+	<!--<jsp:useBean id="dao" class="br.com.caelum.agenda.dao.ContatoDao"/>-->
+	
 	
 	<table border="1">
 	    <tr bgcolor="0000FF" font-color="ffffff">
@@ -20,10 +21,12 @@
 	    	<th>endereco</th>
 	    	<th>Data Nascimento</th>
 	    </tr>	
-		<!--  pecorre contatos montando as linhas da tabela -->
-		<c:forEach var="contato" varStatus = "id" items="${dao.lista}">
+		<c:forEach var="contato" items="${contatos}">
 
 		<tr bgcolor="#${id.count%2==0?'ffcc00':'ffffff'}">
+			<td>
+				<a href="mvc?logica=RemoveContatoLogic&id=${contato.id}">Remover</a>
+			</td>
 			<td>${contato.nome}</td>
 			<td>
 				<c:if test="${not empty contato.email}">
